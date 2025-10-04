@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script>
+      (function () {
+        // Repo base MUST match vite.config.js base (minus trailing slash)
+        var base = "/react-with-api";
+
+        var l = window.location;
+        // Preserve the path/query/hash beyond the base
+        var rest = l.pathname.startsWith(base)
+          ? l.pathname.slice(base.length)
+          : l.pathname;
+
+        // Encode original client route in ?p= so the app can restore it
+        var target = base + "/?p=" + encodeURIComponent(rest + l.search + l.hash);
+        l.replace(target);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

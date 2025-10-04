@@ -31,7 +31,7 @@ const Movies = () => {
   async function getMovies() {
     setLoading(true)
     const { data } = await axios.get(
-      `https://omdbapi.com/?apikey=${API_KEY}&s=${encodeURIComponent(searchFor)}`
+      `https://omdbapi.com/?apikey=${OMDB_KEY}&s=${encodeURIComponent(searchFor)}`
     );
     const resp = data.Search || []
     const unique = filterByImdID(resp)

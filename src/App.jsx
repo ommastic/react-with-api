@@ -24,6 +24,19 @@ function App() {
   const location = useLocation()
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const p = params.get("p");
+    if (p) {
+      params.delete("p");
+      const remaining = params.toString();
+      // Put the app on the preserved client route once, then clean the URL
+      navigate(p + (remaining ? `?${remaining}` : ""), { replace: true });
+    }
+    // run once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       const { pathname } = location;
       if (!user && pathname !== "/login") {

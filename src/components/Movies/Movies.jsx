@@ -134,7 +134,7 @@ const Movies = () => {
 
             {loading ? (
               <div className="movies__loading">
-                <FontAwesomeIcon icon="spinner" />
+                <FontAwesomeIcon icon="spinner" className="fa-spinner"/>
               </div>
             ) : (
               <>
